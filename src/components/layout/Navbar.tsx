@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { JobConnectLogo } from '@/components/brand/JobConnectLogo';
-import { Button } from '@/components/ui/Button';
+import { SafeLink } from '@/components/ui/SafeLink';
 import { MAIN_NAV_LINKS, MOBILE_NAV_LINKS } from '@/constants/navigation';
 import { useNavbarScroll } from '@/hooks/useNavbarScroll';
+import { APK_DOWNLOAD_URL } from '@/constants/site';
 
 export function Navbar() {
   const isScrolled = useNavbarScroll(40);
@@ -46,9 +47,14 @@ export function Navbar() {
             >
               تسجيل الدخول
             </a>
-            <Button variant="primary" className="px-5 py-2.5 rounded-xl text-sm">
+            <SafeLink
+              href={APK_DOWNLOAD_URL}
+              external
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 transform active:scale-95 shadow-md shadow-sky-100 bg-sky-600 text-white hover:bg-sky-700"
+              aria-label="تحميل التطبيق APK"
+            >
               تحميل التطبيق
-            </Button>
+            </SafeLink>
           </div>
 
           <button
@@ -78,13 +84,15 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
-            <Button
-              variant="primary"
-              className="w-full mt-4 justify-center"
+            <SafeLink
+              href={APK_DOWNLOAD_URL}
+              external
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-bold transition-all duration-300 transform active:scale-95 text-base shadow-md shadow-sky-100 bg-sky-600 text-white hover:bg-sky-700 w-full mt-4"
               onClick={closeMobile}
+              aria-label="تحميل التطبيق APK"
             >
               تحميل التطبيق مجاناً
-            </Button>
+            </SafeLink>
           </div>
         )}
       </nav>

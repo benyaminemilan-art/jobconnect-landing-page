@@ -12,7 +12,9 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { SafeImage } from '@/components/ui/SafeImage';
+import { SafeLink } from '@/components/ui/SafeLink';
 import { SIDEBAR_LINKS } from '@/constants/content';
+import { APK_DOWNLOAD_URL } from '@/constants/site';
 
 const AVATAR_INDICES = [1, 2, 3, 4] as const;
 
@@ -48,9 +50,15 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="primary" icon={<Download className="w-5 h-5" aria-hidden />}>
+              <SafeLink
+                href={APK_DOWNLOAD_URL}
+                external
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-bold transition-all duration-300 transform active:scale-95 text-base shadow-md shadow-sky-100 bg-sky-600 text-white hover:bg-sky-700"
+                aria-label="تحميل التطبيق APK"
+              >
                 تحميل التطبيق
-              </Button>
+                <span className="flex-shrink-0"><Download className="w-5 h-5" aria-hidden /></span>
+              </SafeLink>
               <Button variant="secondary" icon={<ArrowLeft className="w-5 h-5" aria-hidden />}>
                 إنشاء حساب مجاني
               </Button>
